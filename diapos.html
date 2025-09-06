@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reglamento de Compensaciones - Ley N° 30057</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #333;
+        overflow-x: hidden;
+      }
+
+      .presentation-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .slide {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        margin: 30px 0;
+        padding: 40px;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: slideIn 0.8s ease forwards;
+        border-left: 5px solid #667eea;
+      }
+
+      .slide:nth-child(even) {
+        border-left: 5px solid #764ba2;
+      }
+
+      @keyframes slideIn {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .slide h1 {
+        color: #2c3e50;
+        font-size: 2.5em;
+        margin-bottom: 30px;
+        text-align: center;
+        position: relative;
+        padding-bottom: 15px;
+      }
+
+      .slide h1:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+      }
+
+      .slide h2 {
+        color: #34495e;
+        font-size: 2em;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .slide h3 {
+        color: #667eea;
+        font-size: 1.4em;
+        margin: 25px 0 15px 0;
+        border-bottom: 2px solid #ecf0f1;
+        padding-bottom: 8px;
+      }
+
+      .slide p {
+        font-size: 1.1em;
+        line-height: 1.7;
+        margin-bottom: 20px;
+        text-align: justify;
+        color: #2c3e50;
+      }
+
+      .slide ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .slide li {
+        margin: 15px 0;
+        padding: 15px 20px;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-radius: 10px;
+        border-left: 4px solid #667eea;
+        font-size: 1.05em;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+      }
+
+      .slide li:hover {
+        transform: translateX(10px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+      }
+
+      .slide li::before {
+        content: "▶";
+        color: #667eea;
+        font-weight: bold;
+        margin-right: 10px;
+      }
+
+      .highlight-box {
+        background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+        border: 2px solid #667eea;
+        border-radius: 15px;
+        padding: 25px;
+        margin: 25px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .highlight-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+      }
+
+      .two-column {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin: 25px 0;
+      }
+
+      .column {
+        padding: 20px;
+        border-radius: 10px;
+        background: #f8f9fa;
+      }
+
+      .positive {
+        border-left: 4px solid #28a745;
+      }
+
+      .negative {
+        border-left: 4px solid #dc3545;
+      }
+
+      .icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 1.2em;
+      }
+
+      .icon-blue {
+        background: #667eea;
+      }
+      .icon-purple {
+        background: #764ba2;
+      }
+      .icon-green {
+        background: #28a745;
+      }
+      .icon-red {
+        background: #dc3545;
+      }
+
+      .case-study {
+        background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        border-radius: 15px;
+        padding: 30px;
+        margin: 25px 0;
+        border: 2px dashed #2196f3;
+      }
+
+      .footer-info {
+        text-align: center;
+        color: #6c757d;
+        font-style: italic;
+        margin-top: 30px;
+        padding: 20px;
+        border-top: 2px solid #ecf0f1;
+      }
+
+      .slide:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .slide:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .slide:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .slide:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .slide:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      .slide:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+      .slide:nth-child(7) {
+        animation-delay: 0.7s;
+      }
+
+      @media (max-width: 768px) {
+        .two-column {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .slide {
+          padding: 25px;
+          margin: 20px 0;
+        }
+
+        .slide h1 {
+          font-size: 2em;
+        }
+
+        .slide h2 {
+          font-size: 1.6em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="presentation-container">
+      <!-- Slide 1: Título -->
+      <div class="slide">
+        <h1>REGLAMENTO DE COMPENSACIONES<br />LEY N° 30057</h1>
+        <div class="highlight-box">
+          <p style="text-align: center; font-size: 1.2em; color: #2c3e50">
+            <strong>Marco Normativo del Servicio Civil Peruano</strong><br />
+            Decreto Supremo N° 138-2014-EF
+          </p>
+        </div>
+        <div class="footer-info">
+          Gerencia de Recursos Humanos por Competencias<br />
+          Universidad Nacional de San Agustín de Arequipa - Escuela de Posgrado
+        </div>
+      </div>
+
+      <!-- Slide 2: Marco Normativo -->
+      <div class="slide">
+        <h2>
+          <div class="icon icon-blue">📋</div>
+          Marco Normativo y Antecedentes
+        </h2>
+
+        <h3>Problemática Anterior</h3>
+        <p>Fragmentación del régimen laboral estatal con coexistencia de:</p>
+        <ul>
+          <li>Decreto Legislativo 276 (Carrera Administrativa)</li>
+          <li>Decreto Legislativo 728 (Régimen Privado)</li>
+          <li>Contratos Administrativos de Servicios (CAS)</li>
+        </ul>
+
+        <div class="highlight-box">
+          <h3>Solución: Ley N° 30057 - Ley del Servicio Civil</h3>
+          <p>
+            <strong>Objetivo:</strong> Construir un régimen único y moderno para
+            los servidores civiles, estableciendo equidad, transparencia y
+            sostenibilidad fiscal.
+          </p>
+        </div>
+
+        <h3>Estructura del Reglamento</h3>
+        <p>
+          <strong>Componentes:</strong> 3 títulos, 24 artículos, 5 disposiciones
+          complementarias finales, 1 disposición transitoria y 21 anexos con
+          escalas de valoración.
+        </p>
+      </div>
+
+      <!-- Slide 3: Principios Rectores -->
+      <div class="slide">
+        <h2>
+          <div class="icon icon-purple">⚖️</div>
+          Principios Rectores
+        </h2>
+
+        <ul>
+          <li>
+            <strong>Equidad Interna:</strong> Garantizar compensaciones
+            similares para funciones equivalentes
+          </li>
+          <li>
+            <strong>Competitividad Externa:</strong> Mantener remuneraciones
+            competitivas frente al mercado laboral
+          </li>
+          <li>
+            <strong>Transparencia:</strong> Asegurar claridad y publicidad en
+            criterios de compensación
+          </li>
+          <li>
+            <strong>Sostenibilidad Fiscal:</strong> Adecuar compensaciones a la
+            capacidad presupuestal del Estado
+          </li>
+          <li>
+            <strong>Reconocimiento al Mérito:</strong> Vincular beneficios con
+            cumplimiento de objetivos y competencias
+          </li>
+        </ul>
+
+        <div class="highlight-box">
+          <p><strong>Distribución de Responsabilidades:</strong></p>
+          <p>
+            <strong>SERVIR:</strong> Propone y supervisa compensaciones no
+            económicas
+          </p>
+          <p><strong>MEF:</strong> Valida y regula compensaciones económicas</p>
+        </div>
+      </div>
+
+      <!-- Slide 4: Estructura de Compensaciones -->
+      <div class="slide">
+        <h2>
+          <div class="icon icon-green">💰</div>
+          Estructura de Compensaciones
+        </h2>
+
+        <div class="two-column">
+          <div class="column">
+            <h3 style="color: #28a745">Compensación Económica</h3>
+            <p>
+              <strong>Modalidad:</strong> 14 partes anuales (12 mensualidades +
+              2 aguinaldos)
+            </p>
+            <ul style="font-size: 0.95em">
+              <li>Valorización Principal</li>
+              <li>Valorización Ajustada</li>
+              <li>Valorización Priorizada</li>
+              <li>Aguinaldos (julio y diciembre)</li>
+              <li>Vacaciones</li>
+              <li>CTS</li>
+            </ul>
+          </div>
+          <div class="column">
+            <h3 style="color: #764ba2">Compensación No Económica</h3>
+            <p>
+              <strong>Características:</strong> Beneficios no monetarios sin
+              ventaja patrimonial
+            </p>
+            <ul style="font-size: 0.95em">
+              <li>Reconocimientos y distinciones</li>
+              <li>Programas de bienestar familiar</li>
+              <li>Instalaciones recreativas</li>
+              <li>Convenios corporativos</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <p>
+            <strong>Enfoque por Competencias:</strong> Las compensaciones se
+            vinculan con desempeño, responsabilidades y competencias
+            demostradas, no solo con antigüedad.
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide 5: Caso Práctico -->
+      <div class="slide">
+        <h2>
+          <div class="icon icon-blue">📊</div>
+          Caso Práctico: MINSA
+        </h2>
+
+        <div class="case-study">
+          <h3>Contexto: Hospital Regional del MINSA</h3>
+          <p>
+            <strong>Problema:</strong> Coexistencia de trabajadores bajo
+            regímenes CAS, DL 276 y DL 728 con grandes diferencias remunerativas
+            para puestos similares.
+          </p>
+
+          <h3>Implementación del Reglamento:</h3>
+          <ul>
+            <li>
+              Clasificación de puestos por familias (médicos especialistas,
+              administrativos, técnicos)
+            </li>
+            <li>
+              Cálculo de valorización principal y ajustada según complejidad
+            </li>
+            <li>
+              Implementación de compensaciones no económicas (convenios
+              universitarios, reconocimientos)
+            </li>
+          </ul>
+
+          <p>
+            <strong>Resultado Esperado:</strong> Mayor equidad salarial,
+            reducción de rotación y mejora en motivación del personal.
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide 6: Análisis Crítico -->
+      <div class="slide">
+        <h2>
+          <div class="icon icon-red">🔍</div>
+          Análisis Crítico
+        </h2>
+
+        <div class="two-column">
+          <div class="column positive">
+            <h3 style="color: #28a745">Aspectos Positivos</h3>
+            <ul>
+              <li>Ordenamiento y transparencia</li>
+              <li>Reducción de inequidades</li>
+              <li>Promoción de la meritocracia</li>
+              <li>Reconocimiento integral (económico y no económico)</li>
+              <li>Modernización del servicio civil</li>
+            </ul>
+          </div>
+          <div class="column negative">
+            <h3 style="color: #dc3545">Desafíos y Limitaciones</h3>
+            <ul>
+              <li>Implementación lenta y parcial</li>
+              <li>Limitaciones presupuestales</li>
+              <li>Resistencia sindical</li>
+              <li>Desigualdades entre entidades</li>
+              <li>Dependencia de capacidad logística</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 7: Propuestas de Mejora -->
+      <div class="slide">
+        <h2>
+          <div class="icon icon-purple">🚀</div>
+          Propuestas de Mejora
+        </h2>
+
+        <div class="highlight-box">
+          <h3>Estrategias de Fortalecimiento</h3>
+
+          <ul>
+            <li>
+              <strong>Capacitación Especializada:</strong> Fortalecer la
+              formación de gestores públicos para garantizar implementación
+              técnica y homogénea
+            </li>
+            <li>
+              <strong>Fondos de Transición:</strong> Asegurar recursos desde el
+              MEF para entidades con limitada capacidad presupuestal inicial
+            </li>
+            <li>
+              <strong>Revisión Periódica:</strong> Actualizar tablas de
+              valorización cada 3-5 años para ajustar al contexto económico
+              actual
+            </li>
+            <li>
+              <strong>Sistema de Monitoreo:</strong> Establecer indicadores de
+              seguimiento para evaluar el impacto de las compensaciones
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer-info">
+          <p>
+            <strong>Reflexión Final:</strong> El Reglamento de Compensaciones
+            representa un avance significativo hacia la modernización del
+            Estado, requiriendo un enfoque integral que combine aspectos
+            técnicos, financieros y de gestión del cambio.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Animación adicional para elementos interactivos
+      document.addEventListener("DOMContentLoaded", function () {
+        const slides = document.querySelectorAll(".slide");
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.animationPlayState = "running";
+            }
+          });
+        });
+
+        slides.forEach((slide) => {
+          observer.observe(slide);
+        });
+      });
+    </script>
+  </body>
+</html>
