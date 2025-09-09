@@ -5,592 +5,672 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reglamento de Compensaciones - Ley del Servicio Civil</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-        body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-            color: #333;
-            overflow: hidden;
-        }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #333;
+        overflow: hidden;
+        height: 100vh;
+      }
 
-        .slideshow-container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
+      /* Animated Background Particles */
+      .particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .particle {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .particle:nth-child(1) { width: 18px; height: 18px; left: 10%; animation-delay: 0s; }
+      .particle:nth-child(2) { width: 22px; height: 22px; left: 20%; animation-delay: 1s; }
+      .particle:nth-child(3) { width: 16px; height: 16px; left: 30%; animation-delay: 2s; }
+      .particle:nth-child(4) { width: 20px; height: 20px; left: 40%; animation-delay: 3s; }
+      .particle:nth-child(5) { width: 18px; height: 18px; left: 50%; animation-delay: 4s; }
+      .particle:nth-child(6) { width: 24px; height: 24px; left: 60%; animation-delay: 5s; }
+      .particle:nth-child(7) { width: 16px; height: 16px; left: 70%; animation-delay: 0.5s; }
+      .particle:nth-child(8) { width: 20px; height: 20px; left: 80%; animation-delay: 1.5s; }
+      .particle:nth-child(9) { width: 18px; height: 18px; left: 90%; animation-delay: 2.5s; }
+      .particle:nth-child(10) { width: 22px; height: 22px; left: 15%; animation-delay: 3.5s; }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+      }
+
+      .slideshow-container {
+        position: relative;
+        max-width: 1200px;
+        margin: 0 auto;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        z-index: 2;
+      }
+
+      .slide {
+        display: none;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        padding: 40px;
+        margin: 20px;
+        border-left: 5px solid #667eea;
+        animation: slideInRight 0.5s ease-in-out;
+        height: 80vh;
+        overflow-y: auto;
+      }
+
+      .slide.active {
+        display: block;
+      }
+
+      .slide:nth-child(even) {
+        border-left: 5px solid #764ba2;
+      }
+
+      @keyframes slideInRight {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+
+      @keyframes slideInLeft {
+        from { transform: translateX(-100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+
+      .slide.slide-left {
+        animation: slideInLeft 0.5s ease-in-out;
+      }
+
+      .slide h1 {
+        color: #2c3e50;
+        font-size: 2.5em;
+        margin-bottom: 30px;
+        text-align: center;
+        position: relative;
+        padding-bottom: 15px;
+      }
+
+      .slide h1:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+      }
+
+      .slide h2 {
+        color: #34495e;
+        font-size: 2em;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .slide h3 {
+        color: #667eea;
+        font-size: 1.4em;
+        margin: 25px 0 15px 0;
+        border-bottom: 2px solid #ecf0f1;
+        padding-bottom: 8px;
+      }
+
+      .slide p {
+        font-size: 1.1em;
+        line-height: 1.7;
+        margin-bottom: 20px;
+        text-align: justify;
+        color: #2c3e50;
+      }
+
+      .slide ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .slide li {
+        margin: 15px 0;
+        padding: 15px 20px;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        border-radius: 10px;
+        border-left: 4px solid #667eea;
+        font-size: 1.05em;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+      }
+
+      .slide li:hover {
+        transform: translateX(10px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+      }
+
+      .slide li::before {
+        content: "▶";
+        color: #667eea;
+        font-weight: bold;
+        margin-right: 10px;
+      }
+
+      .highlight-box {
+        background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+        border: 2px solid #667eea;
+        border-radius: 15px;
+        padding: 25px;
+        margin: 25px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .highlight-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+      }
+
+      .two-column {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin: 25px 0;
+      }
+
+      .column {
+        padding: 20px;
+        border-radius: 10px;
+        background: #f8f9fa;
+      }
+
+      .positive {
+        border-left: 4px solid #28a745;
+      }
+
+      .negative {
+        border-left: 4px solid #dc3545;
+      }
+
+      .icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+        font-size: 1.2em;
+      }
+
+      .icon-blue { background: #667eea; }
+      .icon-purple { background: #764ba2; }
+      .icon-green { background: #28a745; }
+      .icon-red { background: #dc3545; }
+
+      .case-study {
+        background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+        border-radius: 15px;
+        padding: 30px;
+        margin: 25px 0;
+        border: 2px dashed #2196f3;
+      }
+
+      .footer-info {
+        text-align: center;
+        color: #6c757d;
+        font-style: italic;
+        margin-top: 30px;
+        padding: 20px;
+        border-top: 2px solid #ecf0f1;
+      }
+
+      /* Navigation Controls */
+      .nav-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: rgba(255, 255, 255, 0.9);
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+        color: #667eea;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        z-index: 3;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .nav-button:hover {
+        background: white;
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .prev {
+        left: 20px;
+      }
+
+      .next {
+        right: 20px;
+      }
+
+      /* Slide Indicators */
+      .slide-indicators {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 15px;
+        z-index: 3;
+      }
+
+      .indicator {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+
+      .indicator.active {
+        background: white;
+        border-color: #667eea;
+        transform: scale(1.2);
+        box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+      }
+
+      .indicator:hover {
+        background: rgba(255, 255, 255, 0.8);
+        transform: scale(1.1);
+      }
+
+      /* Slide Counter */
+      .slide-counter {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-weight: bold;
+        color: #667eea;
+        z-index: 3;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      @media (max-width: 768px) {
+        .two-column {
+          grid-template-columns: 1fr;
+          gap: 20px;
         }
 
         .slide {
-            display: none;
-            padding: 60px;
-            background: white;
-            margin: 40px;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            height: calc(100vh - 80px);
-            overflow-y: auto;
-            position: relative;
+          padding: 25px;
+          margin: 10px;
+          height: 85vh;
         }
 
-        .slide.active {
-            display: block;
-            animation: slideIn 0.5s ease-in-out;
+        .slide h1 {
+          font-size: 2em;
         }
 
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(30px); }
-            to { opacity: 1; transform: translateX(0); }
+        .slide h2 {
+          font-size: 1.6em;
         }
 
-        .slide-header {
-            border-bottom: 3px solid #2a5298;
-            padding-bottom: 20px;
-            margin-bottom: 30px;
+        .nav-button {
+          width: 50px;
+          height: 50px;
+          font-size: 20px;
         }
 
-        .slide-number {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            background: #2a5298;
-            color: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        h1 {
-            color: #1e3c72;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-
-        h2 {
-            color: #2a5298;
-            font-size: 2em;
-            margin-bottom: 20px;
-            border-left: 5px solid #2a5298;
-            padding-left: 20px;
-        }
-
-        h3 {
-            color: #1e3c72;
-            font-size: 1.4em;
-            margin: 20px 0 15px 0;
-        }
-
-        .subtitle {
-            text-align: center;
-            font-size: 1.2em;
-            color: #666;
-            font-style: italic;
-            margin-bottom: 20px;
-        }
-
-        .content {
-            line-height: 1.8;
-            font-size: 1.1em;
-        }
-
-        ul {
-            margin: 20px 0;
-            padding-left: 30px;
-        }
-
-        li {
-            margin: 10px 0;
-            position: relative;
-        }
-
-        li::marker {
-            color: #2a5298;
-            font-weight: bold;
-        }
-
-        .highlight-box {
-            background: #f8f9ff;
-            border-left: 5px solid #2a5298;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 5px;
-        }
-
-        .definition {
-            background: #e8f4f8;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 15px 0;
-            border: 1px solid #b8d4da;
-        }
-
-        .table-container {
-            overflow-x: auto;
-            margin: 20px 0;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 0.95em;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-
-        th {
-            background: #2a5298;
-            color: white;
-            font-weight: bold;
-        }
-
-        tr:nth-child(even) {
-            background: #f9f9f9;
-        }
-
-        .navigation {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 15px;
-            z-index: 1000;
-        }
-
-        .nav-btn {
-            background: #2a5298;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-
-        .nav-btn:hover {
-            background: #1e3c72;
-            transform: translateY(-2px);
-        }
-
-        .nav-btn:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .slide-indicator {
-            position: fixed;
-            bottom: 100px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 8px;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .dot.active {
-            background: white;
-            transform: scale(1.2);
-        }
-
-        .logo {
-            position: absolute;
-            top: 20px;
-            left: 30px;
-            font-size: 1.2em;
-            font-weight: bold;
-            color: #2a5298;
-        }
-
-        .date-info {
-            text-align: right;
-            color: #666;
-            font-size: 0.9em;
-            margin-bottom: 20px;
-        }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+      }
     </style>
 </head>
 <body>
+    <!-- Animated Background Particles -->
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
     <div class="slideshow-container">
+        <!-- Slide Counter -->
+        <div class="slide-counter">
+            <span id="current-slide">1</span> / <span id="total-slides">9</span>
+        </div>
+
+        <!-- Navigation Buttons -->
+        <button class="nav-button prev" onclick="changeSlide(-1)">❮</button>
+        <button class="nav-button next" onclick="changeSlide(1)">❯</button>
+
         <!-- Slide 1: Título -->
         <div class="slide active">
-            <div class="slide-number">1/9</div>
-            <div class="logo">República del Perú</div>
-            <div class="slide-header">
-                <h1>Reglamento de Compensaciones</h1>
-                <div class="subtitle">Ley N° 30057 - Ley del Servicio Civil</div>
+            <h1>Reglamento de Compensaciones</h1>
+            <div class="highlight-box">
+                <h2><div class="icon icon-blue">📋</div>Ley N° 30057 - Ley del Servicio Civil</h2>
+                <p>Marco normativo que establece las bases para un sistema de compensaciones justo, equitativo y competitivo en el sector público peruano.</p>
             </div>
-            <div class="content">
-                <div class="date-info">Decreto Supremo N° 138-2014-EF<br>Publicado: 13 de junio de 2014</div>
-                <div class="highlight-box">
-                    <h3>Objetivo Principal</h3>
-                    <p>Establecer las disposiciones reglamentarias para la valorización y regulación de las compensaciones económicas y la determinación de las compensaciones no económicas en el marco del nuevo régimen del servicio civil peruano.</p>
-                </div>
-                <div class="definition">
-                    <strong>Ámbito de Aplicación:</strong> Entidades públicas del Estado peruano, con excepción de los Gobiernos Locales (regulación especial).
-                </div>
+            <div class="footer-info">
+                Presentación Académica - Análisis Normativo
             </div>
         </div>
 
         <!-- Slide 2: Concepto de Compensación -->
         <div class="slide">
-            <div class="slide-number">2/9</div>
-            <div class="logo">República del Perú</div>
-            <div class="slide-header">
-                <h2>Concepto de Compensación</h2>
+            <h2><div class="icon icon-purple">💰</div>Concepto de Compensación</h2>
+            <div class="highlight-box">
+                <h3>Definición Legal</h3>
+                <p>La compensación constituye la contraprestación dineraria y los beneficios no dinerarios otorgados al servidor civil como retribución por el desempeño del puesto que ocupa y por su desempeño individual.</p>
             </div>
-            <div class="content">
-                <div class="definition">
-                    <strong>Compensación:</strong> Conjunto de ingresos y beneficios que la entidad destina al servidor civil para retribuir la prestación de sus servicios, determinada según el puesto que ocupa.
-                </div>
-                
-                <h3>Componentes de la Compensación:</h3>
-                <ul>
-                    <li><strong>Compensación Económica:</strong> Contraprestación en dinero por las actividades realizadas en un determinado puesto</li>
-                    <li><strong>Compensación No Económica:</strong> Beneficios otorgados para motivar y elevar la competitividad de los servidores civiles</li>
-                </ul>
-
-                <div class="highlight-box">
-                    <h3>Principio Fundamental</h3>
-                    <p>La compensación se determina según el puesto, no según la persona, garantizando equidad y transparencia en el sistema remunerativo del Estado.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 3: Compensación Económica -->
-        <div class="slide">
-            <div class="slide-number">3/9</div>
-            <div class="logo">República del Perú</div>
-            <div class="slide-header">
-                <h2>Compensación Económica</h2>
-            </div>
-            <div class="content">
-                <h3>Estructura de la Compensación Económica:</h3>
-                <ul>
-                    <li><strong>Valorización Principal:</strong> Componente determinado para la familia de puestos</li>
-                    <li><strong>Valorización Ajustada:</strong> Monto asignado según la entidad, jerarquía, responsabilidad y alcance de decisiones</li>
-                    <li><strong>Valorización Priorizada:</strong> Adicional por condiciones especiales (altitud, riesgo, servicios en el extranjero)</li>
-                </ul>
-
-                <div class="highlight-box">
-                    <h3>Modalidad de Pago</h3>
-                    <p>Se abona en <strong>14 pagos anuales:</strong></p>
+            
+            <div class="two-column">
+                <div class="column positive">
+                    <h3>Compensación Económica</h3>
                     <ul>
-                        <li>12 pagos mensuales (cada uno equivale a 1/14 del monto anual)</li>
-                        <li>2 aguinaldos (Fiestas Patrias y Navidad, cada uno equivale a 1/14 del monto anual)</li>
+                        <li>Compensación básica</li>
+                        <li>Compensación transitoria</li>
+                        <li>Compensaciones variables</li>
+                        <li>Otras compensaciones</li>
                     </ul>
                 </div>
-
-                <div class="definition">
-                    <strong>Principio:</strong> Solo se paga por servicio efectivamente realizado. El valor día se calcula dividiendo 12/14 de la compensación anual entre 365 días.
-                </div>
-            </div>
-        </div>
-
-        <!-- Slide 4: Tipos de Servidores -->
-        <div class="slide">
-            <div class="slide-number">4/9</div>
-            <div class="logo">República del Perú</div>
-            <div class="slide-header">
-                <h2>Clasificación de Servidores Civiles</h2>
-            </div>
-            <div class="content">
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Tipo de Servidor</th>
-                                <th>Características</th>
-                                <th>Criterios de Valorización</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Directivo Público</strong></td>
-                                <td>Cargos de dirección y alta responsabilidad</td>
-                                <td>Función del puesto, número de personas a cargo</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Servidor Civil de Carrera</strong></td>
-                                <td>Personal técnico y profesional permanente</td>
-                                <td>Función, especialización, personal supervisado</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Servidor de Actividades Complementarias</strong></td>
-                                <td>Personal de apoyo y servicios auxiliares</td>
-                                <td>Tipo de función y nivel de responsabilidad</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="highlight-box">
-                    <h3>Rangos Presupuestales de Entidades</h3>
+                <div class="column negative">
+                    <h3>Compensación No Económica</h3>
                     <ul>
-                        <li><strong>Rango 4:</strong> Más de 100 millones de soles</li>
-                        <li><strong>Rango 3:</strong> De 60 a 100 millones de soles</li>
-                        <li><strong>Rango 2:</strong> Entre 30 y 60 millones de soles</li>
-                        <li><strong>Rango 1:</strong> Hasta 30 millones de soles</li>
+                        <li>Beneficios de salud</li>
+                        <li>Beneficios sociales</li>
+                        <li>Beneficios vacacionales</li>
+                        <li>Otros beneficios</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 5: Valorización Ajustada -->
+        <!-- Slide 3: Estructura de Compensación Económica -->
         <div class="slide">
-            <div class="slide-number">5/9</div>
-            <div class="logo">República del Perú</div>
-            <div class="slide-header">
-                <h2>Criterios de Valorización Ajustada</h2>
-            </div>
-            <div class="content">
-                <h3>Para Directivos Públicos:</h3>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Criterio</th>
-                                <th>Aspecto</th>
-                                <th>Porcentaje</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td rowspan="3"><strong>Función del Puesto</strong></td>
-                                <td>Sustantivo</td>
-                                <td>75%</td>
-                            </tr>
-                            <tr>
-                                <td>Administración Interna</td>
-                                <td>60%</td>
-                            </tr>
-                            <tr>
-                                <td>Programa/Proyecto</td>
-                                <td>55%</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="3"><strong>Personal a Cargo</strong></td>
-                                <td>Más de 20 servidores</td>
-                                <td>25%</td>
-                            </tr>
-                            <tr>
-                                <td>De 10 a 20 servidores</td>
-                                <td>15%</td>
-                            </tr>
-                            <tr>
-                                <td>Menos de 10 servidores</td>
-                                <td>0%</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <h2><div class="icon icon-green">📊</div>Estructura de Compensación Económica</h2>
+            
+            <h3>Componentes Principales</h3>
+            <ul>
+                <li><strong>Compensación Básica:</strong> Retribución fija mensual establecida para cada puesto</li>
+                <li><strong>Compensación Transitoria:</strong> Diferencia entre la remuneración anterior y la nueva compensación</li>
+                <li><strong>Compensaciones Variables:</strong> Vinculadas al desempeño individual y institucional</li>
+                <li><strong>Otras Compensaciones:</strong> Beneficios adicionales según normativa específica</li>
+            </ul>
 
-                <div class="definition">
-                    <strong>Cálculo:</strong> Los porcentajes se aplican sobre la Valorización Principal y se suman para obtener la Valorización Ajustada total.
-                </div>
+            <div class="case-study">
+                <h3>Principio de Valoración</h3>
+                <p>La compensación se determina en función de la complejidad de funciones, competencias requeridas, responsabilidad del puesto y condiciones de trabajo.</p>
             </div>
         </div>
 
-        <!-- Slide 6: Beneficios Adicionales -->
+        <!-- Slide 4: Clasificación de Servidores Civiles -->
         <div class="slide">
-            <div class="slide-number">6/9</div>
-            <div class="logo">República del Perú</div>
-            <div class="slide-header">
-                <h2>Beneficios y Entregas Económicas</h2>
-            </div>
-            <div class="content">
-                <h3>Entrega Económica Vacacional</h3>
-                <div class="definition">
-                    Equivale al monto mensual de la compensación económica (Valorización Principal + Ajustada + Priorizada si corresponde). Se abona junto con el pago mensual durante las vacaciones.
-                </div>
-
-                <h3>Aguinaldos</h3>
-                <ul>
-                    <li><strong>Fiestas Patrias:</strong> Se abona en julio</li>
-                    <li><strong>Navidad:</strong> Se abona en diciembre</li>
-                    <li><strong>Monto:</strong> Cada aguinaldo equivale a 1/14 de la compensación anual</li>
-                </ul>
-
-                <h3>Compensación por Tiempo de Servicios (CTS)</h3>
-                <div class="highlight-box">
+            <h2><div class="icon icon-red">👥</div>Clasificación de Servidores Civiles</h2>
+            
+            <div class="two-column">
+                <div class="column">
+                    <h3>Servidores de Carrera</h3>
                     <ul>
-                        <li><strong>Monto:</strong> 100% del promedio mensual de los últimos 36 meses</li>
-                        <li><strong>Pago:</strong> Solo al término del vínculo laboral</li>
-                        <li><strong>Plazo:</strong> Dentro de las 48 horas del cese</li>
-                        <li><strong>Base de cálculo:</strong> Valorización Principal y Ajustada (no incluye aguinaldos)</li>
+                        <li>Funcionarios públicos</li>
+                        <li>Directivos públicos</li>
+                        <li>Servidores civiles de carrera</li>
+                    </ul>
+                </div>
+                <div class="column">
+                    <h3>Servidores de Actividades Complementarias</h3>
+                    <ul>
+                        <li>Personal altamente especializado</li>
+                        <li>Personal de apoyo</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Criterios de Diferenciación</h3>
+                <p>Cada grupo tiene escalas compensatorias específicas basadas en niveles de responsabilidad, especialización técnica y contribución al logro de objetivos institucionales.</p>
+            </div>
+        </div>
+
+        <!-- Slide 5: Beneficios Adicionales -->
+        <div class="slide">
+            <h2><div class="icon icon-blue">🎁</div>Beneficios y Prestaciones</h2>
+            
+            <h3>Beneficios Económicos</h3>
+            <ul>
+                <li>Aguinaldos por Fiestas Patrias y Navidad</li>
+                <li>Compensación por tiempo de servicios (CTS)</li>
+                <li>Asignación familiar</li>
+                <li>Subsidios por lactancia y sepelio</li>
+            </ul>
+
+            <h3>Beneficios No Económicos</h3>
+            <ul>
+                <li>Seguro de salud (EsSalud)</li>
+                <li>Vacaciones anuales remuneradas</li>
+                <li>Licencias por diversos motivos</li>
+                <li>Capacitación y desarrollo profesional</li>
+            </ul>
+
+            <div class="case-study">
+                <h3>Enfoque Integral</h3>
+                <p>El sistema busca equilibrar compensaciones monetarias con beneficios que mejoren la calidad de vida y desarrollo profesional del servidor público.</p>
+            </div>
+        </div>
+
+        <!-- Slide 6: Implementación y Transición -->
+        <div class="slide">
+            <h2><div class="icon icon-purple">⚙️</div>Proceso de Implementación</h2>
+            
+            <div class="highlight-box">
+                <h3>Fases de Transición</h3>
+                <p>La implementación del nuevo régimen se realiza de manera gradual, respetando los derechos adquiridos y estableciendo mecanismos de transición ordenada.</p>
+            </div>
+
+            <h3>Aspectos Clave del Proceso</h3>
+            <ul>
+                <li>Evaluación de puestos existentes</li>
+                <li>Homologación de servidores</li>
+                <li>Establecimiento de bandas salariales</li>
+                <li>Capacitación en el nuevo sistema</li>
+                <li>Monitoreo y evaluación continua</li>
+            </ul>
+
+            <div class="two-column">
+                <div class="column positive">
+                    <h3>Ventajas</h3>
+                    <ul>
+                        <li>Mayor equidad salarial</li>
+                        <li>Transparencia en compensaciones</li>
+                        <li>Incentivos al desempeño</li>
+                    </ul>
+                </div>
+                <div class="column negative">
+                    <h3>Desafíos</h3>
+                    <ul>
+                        <li>Resistencia al cambio</li>
+                        <li>Complejidad administrativa</li>
+                        <li>Recursos presupuestales</li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 7: Compensaciones No Económicas -->
+        <!-- Slide 7: Marco Institucional -->
         <div class="slide">
-            <div class="slide-number">7/9</div>
-            <div class="logo">República del Perú</div>
-            <div class="slide-header">
-                <h2>Compensaciones No Económicas</h2>
+            <h2><div class="icon icon-green">🏛️</div>Marco Institucional</h2>
+            
+            <h3>Entidades Responsables</h3>
+            <ul>
+                <li><strong>SERVIR:</strong> Autoridad Nacional del Servicio Civil</li>
+                <li><strong>MEF:</strong> Ministerio de Economía y Finanzas</li>
+                <li><strong>Entidades Públicas:</strong> Implementación a nivel institucional</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h3>Coordinación Interinstitucional</h3>
+                <p>El éxito del sistema requiere coordinación efectiva entre SERVIR, MEF y las entidades públicas para asegurar implementación coherente y sostenible.</p>
             </div>
-            <div class="content">
-                <div class="definition">
-                    <strong>Definición:</strong> Conjunto de beneficios no monetarios destinados a motivar y elevar la competitividad de los servidores civiles. No son de libre disposición ni constituyen ventaja patrimonial.
-                </div>
 
-                <h3>Modalidades de Compensación No Económica:</h3>
-                <ul>
-                    <li><strong>Reconocimientos:</strong> Distinciones por logros profesionales, científicos o académicos</li>
-                    <li><strong>Facilidades familiares:</strong> Programas de vacaciones útiles, acceso a instalaciones recreativas y clubes deportivos</li>
-                    <li><strong>Mejoras laborales:</strong> Cafeterías, comedores, estacionamientos, gimnasios, lozas deportivas</li>
-                    <li><strong>Convenios corporativos:</strong> Descuentos con empresas para beneficio de los servidores</li>
-                </ul>
-
-                <div class="highlight-box">
-                    <h3>Flexibilidad</h3>
-                    <p>Las entidades pueden establecer otras modalidades similares, ya sea de manera unilateral o mediante convenios individuales o colectivos, según sus posibilidades presupuestarias y de infraestructura.</p>
-                </div>
+            <div class="case-study">
+                <h3>Supervisión y Control</h3>
+                <p>Se establecen mecanismos de supervisión para garantizar el cumplimiento normativo y la correcta aplicación de las escalas compensatorias.</p>
             </div>
         </div>
 
-        <!-- Slide 8: Aspectos Tributarios -->
+        <!-- Slide 8: Impacto y Resultados Esperados -->
         <div class="slide">
-            <div class="slide-number">8/9</div>
-            <div class="logo">República del Perú</div>
-            <div class="slide-header">
-                <h2>Aspectos Tributarios y Especiales</h2>
-            </div>
-            <div class="content">
-                <h3>Conceptos Afectos a Impuestos y Contribuciones:</h3>
-                <div class="highlight-box">
+            <h2><div class="icon icon-red">📈</div>Impacto y Resultados Esperados</h2>
+            
+            <div class="two-column">
+                <div class="column positive">
+                    <h3>Beneficios Institucionales</h3>
                     <ul>
-                        <li>Valorización Principal</li>
-                        <li>Valorización Ajustada</li>
-                        <li>Aguinaldos</li>
-                        <li>Entrega económica vacacional</li>
+                        <li>Mejora en la gestión del talento</li>
+                        <li>Mayor productividad</li>
+                        <li>Reducción de rotación</li>
+                        <li>Fortalecimiento institucional</li>
                     </ul>
-                    <p><strong>Nota:</strong> La Valorización Priorizada y la CTS no están afectas.</p>
                 </div>
-
-                <h3>Disposiciones Especiales:</h3>
-                <ul>
-                    <li><strong>Ocupación interina:</strong> Derecho a percibir la compensación del puesto superior después de 30 días calendario</li>
-                    <li><strong>Límite presupuestal:</strong> Las compensaciones no pueden exceder en más del 15% el presupuesto institucional para personal</li>
-                    <li><strong>Funcionarios de libre designación:</strong> CTS calculada sobre el promedio de los últimos 36 meses sin incluir aguinaldos</li>
-                </ul>
-
-                <div class="definition">
-                    <strong>Implementación:</strong> El reglamento entra en vigencia cuando se cumpla con lo dispuesto en la Novena Disposición Complementaria Final de la Ley N° 30057.
+                <div class="column positive">
+                    <h3>Beneficios para Servidores</h3>
+                    <ul>
+                        <li>Compensaciones justas</li>
+                        <li>Desarrollo profesional</li>
+                        <li>Estabilidad laboral</li>
+                        <li>Reconocimiento al mérito</li>
+                    </ul>
                 </div>
+            </div>
+
+            <div class="highlight-box">
+                <h3>Visión de Largo Plazo</h3>
+                <p>Construcción de un servicio civil profesional, meritocrático y orientado a resultados que contribuya al desarrollo del país y mejore la calidad de los servicios públicos.</p>
             </div>
         </div>
 
         <!-- Slide 9: Conclusiones -->
         <div class="slide">
-            <div class="slide-number">9/9</div>
-            <div class="logo">República del Perú</div>
-            <div class="slide-header">
-                <h2>Conclusiones y Perspectivas</h2>
+            <h2><div class="icon icon-blue">✅</div>Conclusiones</h2>
+            
+            <div class="highlight-box">
+                <h3>Transformación del Servicio Civil</h3>
+                <p>El Reglamento de Compensaciones representa un paso fundamental hacia la modernización del Estado peruano, estableciendo bases sólidas para un servicio civil profesional y eficiente.</p>
             </div>
-            <div class="content">
-                <h3>Logros del Nuevo Sistema:</h3>
-                <ul>
-                    <li><strong>Transparencia:</strong> Criterios objetivos y públicos para la determinación de compensaciones</li>
-                    <li><strong>Equidad:</strong> Compensación basada en el puesto, no en la persona</li>
-                    <li><strong>Eficiencia:</strong> Estructura remunerativa que incentiva el desempeño</li>
-                    <li><strong>Sostenibilidad:</strong> Marco presupuestal controlado y predecible</li>
-                </ul>
 
-                <div class="highlight-box">
-                    <h3>Implementación Progresiva</h3>
-                    <p>El reglamento permite la implementación gradual del nuevo sistema de compensaciones, considerando las capacidades institucionales y presupuestarias de cada entidad pública.</p>
-                </div>
+            <h3>Puntos Clave</h3>
+            <ul>
+                <li>Sistema integral de compensaciones económicas y no económicas</li>
+                <li>Enfoque meritocrático y orientado al desempeño</li>
+                <li>Implementación gradual y ordenada</li>
+                <li>Fortalecimiento de la gestión pública</li>
+                <li>Mejora en la calidad del servicio al ciudadano</li>
+            </ul>
 
-                <h3>Próximos Pasos:</h3>
-                <ul>
-                    <li>Elaboración de Cuadros de Puestos de las Entidades (CPE)</li>
-                    <li>Capacitación a funcionarios responsables</li>
-                    <li>Implementación del Registro de CTS</li>
-                    <li>Desarrollo de normas complementarias</li>
-                </ul>
-
-                <div class="definition">
-                    <strong>Impacto esperado:</strong> Modernización integral del servicio civil peruano con servidores más competitivos y motivados al servicio de la ciudadanía.
-                </div>
+            <div class="footer-info">
+                <strong>Ley N° 30057 - Ley del Servicio Civil</strong><br>
+                Reglamento de Compensaciones - Análisis Normativo Académico
             </div>
         </div>
-    </div>
 
-    <!-- Navigation -->
-    <div class="navigation">
-        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">❮ Anterior</button>
-        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Siguiente ❯</button>
-    </div>
-
-    <!-- Slide indicators -->
-    <div class="slide-indicator">
-        <span class="dot active" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-        <span class="dot" onclick="currentSlide(4)"></span>
-        <span class="dot" onclick="currentSlide(5)"></span>
-        <span class="dot" onclick="currentSlide(6)"></span>
-        <span class="dot" onclick="currentSlide(7)"></span>
-        <span class="dot" onclick="currentSlide(8)"></span>
-        <span class="dot" onclick="currentSlide(9)"></span>
+        <!-- Slide Indicators -->
+        <div class="slide-indicators">
+            <div class="indicator active" onclick="currentSlide(1)"></div>
+            <div class="indicator" onclick="currentSlide(2)"></div>
+            <div class="indicator" onclick="currentSlide(3)"></div>
+            <div class="indicator" onclick="currentSlide(4)"></div>
+            <div class="indicator" onclick="currentSlide(5)"></div>
+            <div class="indicator" onclick="currentSlide(6)"></div>
+            <div class="indicator" onclick="currentSlide(7)"></div>
+            <div class="indicator" onclick="currentSlide(8)"></div>
+            <div class="indicator" onclick="currentSlide(9)"></div>
+        </div>
     </div>
 
     <script>
         let slideIndex = 1;
         const totalSlides = 9;
 
+        function changeSlide(n) {
+            showSlide(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlide(slideIndex = n);
+        }
+
         function showSlide(n) {
-            const slides = document.getElementsByClassName('slide');
-            const dots = document.getElementsByClassName('dot');
+            const slides = document.getElementsByClassName("slide");
+            const indicators = document.getElementsByClassName("indicator");
             
             if (n > totalSlides) { slideIndex = 1; }
             if (n < 1) { slideIndex = totalSlides; }
             
+            // Hide all slides
             for (let i = 0; i < slides.length; i++) {
-                slides[i].classList.remove('active');
+                slides[i].classList.remove("active");
             }
             
-            for (let i = 0; i < dots.length; i++) {
-                dots[i].classList.remove('active');
+            // Remove active class from all indicators
+            for (let i = 0; i < indicators.length; i++) {
+                indicators[i].classList.remove("active");
             }
             
-            slides[slideIndex - 1].classList.add('active');
-            dots[slideIndex - 1].classList.add('active');
+            // Show current slide with animation
+            const currentSlideElement = slides[slideIndex - 1];
+            currentSlideElement.classList.add("active");
             
-            // Update navigation buttons
-            document.getElementById('prevBtn').disabled = slideIndex === 1;
-            document.getElementById('nextBtn').disabled = slideIndex === totalSlides;
-        }
-
-        function changeSlide(n) {
-            slideIndex += n;
-            showSlide(slideIndex);
-        }
-
-        function currentSlide(n) {
-            slideIndex = n;
-            showSlide(slideIndex);
+            // Add slide direction animation
+            if (n > slideIndex - 1) {
+                currentSlideElement.classList.remove("slide-left");
+            } else {
+                currentSlideElement.classList.add("slide-left");
+            }
+            
+            // Activate current indicator
+            indicators[slideIndex - 1].classList.add("active");
+            
+            // Update slide counter
+            document.getElementById("current-slide").textContent = slideIndex;
         }
 
         // Keyboard navigation
@@ -602,8 +682,10 @@
             }
         });
 
-        // Initialize
-        showSlide(slideIndex);
+        // Auto-advance slides (optional - uncomment to enable)
+        // setInterval(function() {
+        //     changeSlide(1);
+        // }, 10000);
     </script>
 </body>
 </html>
